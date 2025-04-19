@@ -43,13 +43,14 @@ python -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate   # Windows
 ```
-`
 
 3️⃣ Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+
 Create a `bank.db` SQLite database and add `bank_branches`  table or use the database file given in the Tests folder.
+
  
 4️⃣ Run the server:
 ```bash
