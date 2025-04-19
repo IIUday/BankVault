@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Branch Details</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 25px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 14px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            text-align: left;
+        }
+        tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+        tr:hover td {
+            background-color: #eef6ff;
+            transition: background 0.3s ease;
+        }
+        .no-branch {
+            color: #333;
+            background: #ffebeb;
+            padding: 15px;
+            border: 1px solid #f5c2c7;
+            border-radius: 10px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            background: linear-gradient(45deg, #007BFF, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(0, 123, 255, 0.4);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 86, 179, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Branch Details</h1>                       <!-- Finding the details for the specific branch from ifsc provided by the user-->
+
+        {% if branch %}
+        <table>
+            <tr><th>IFSC</th><td>{{ branch.ifsc }}</td></tr>
+            <tr><th>Bank ID</th><td>{{ branch.bank_id }}</td></tr>
+            <tr><th>Bank Name</th><td>{{ branch.bank_name }}</td></tr>
+            <tr><th>Branch</th><td>{{ branch.branch }}</td></tr>
+            <tr><th>Address</th><td>{{ branch.address }}</td></tr>
+            <tr><th>City</th><td>{{ branch.city }}</td></tr>
+            <tr><th>District</th><td>{{ branch.district }}</td></tr>
+            <tr><th>State</th><td>{{ branch.state }}</td></tr>
+        </table>
+        {% else %}
+        <div class="no-branch">
+            <p>No branch found for IFSC: <strong>{{ ifsc }}</strong></p>
+        </div>
+        {% endif %}
+
+        <a href="/" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>

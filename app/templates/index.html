@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BankVault</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            margin-bottom: 25px;
+            color: #333;
+        }
+        h3 {
+            margin: 25px 0 15px;
+            color: #555;
+            font-weight: normal;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            margin: 10px auto;
+            font-size: 17px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #007BFF, #0056b3);
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(0, 123, 255, 0.4);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 86, 179, 0.6);
+        }
+        input[type="text"] {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 280px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to BankVault</h1>
+
+        <a class="btn" href="/banks">Get Bank List</a>                          <!--Button to redirect to the Bank_List page--> 
+
+        <h3>To Get the Branch Details enter the IFSC code below :</h3>
+        <input type="text" id="ifscInput" placeholder="Enter IFSC Code">
+        <br>
+        <button class="btn" onclick="redirectToBranch()">Get Details</button>
+    </div>
+
+    <script>
+        function redirectToBranch() {
+            const ifsc = document.getElementById("ifscInput").value.trim();
+            if(ifsc) {
+                window.location.href = "/branches/" + ifsc;                      // Redirect specific Branch details page 
+            } else {                                                             // uses ifsc code as primary key
+                alert("Please enter a valid IFSC code!");
+            }
+        }
+    </script>
+</body>
+</html>
